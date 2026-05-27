@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.floatagent">
+
+    <!-- 悬浮窗权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 网络请求 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 定位（地图显示当前位置） -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 前台服务 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 截图权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+
+    <!-- 声明要查询的 App（Android 11+） -->
+    <queries>
+        <package android:name="com.taobao.taobao" />
+        <package android:name="com.jingdong.app.mall" />
+        <package android:name="com.xunmeng.pinduoduo" />
+        <package android:name="com.xingin.xhs" />
+        <package android:name="com.sankuai.meituan" />
+        <package android:name="com.dianping.v1" />
+        <package android:name="tv.danmaku.bili" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:label="FloatAgent"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity android:name=".CollectionListActivity"
+            android:exported="false"
+            android:label="我的收藏" />
+
+        <activity android:name=".MapActivity"
+            android:exported="false"
+            android:label="收藏地图" />
+
+        <activity android:name=".ItineraryActivity"
+            android:exported="false"
+            android:label="行程规划" />
+
+        <activity android:name=".RouteMapActivity"
+            android:exported="false"
+            android:label="规划路线" />
+
+        <activity android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 悬浮球后台服务（mediaProjection 用于截图） -->
+        <service
+            android:name=".service.FloatingBallService"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="false" />
+
+        <!-- 无障碍服务（读取屏幕） -->
+        <service
+            android:name=".service.ScreenReaderService"
+            android:exported="true"
+            android:label="FloatAgent 屏幕助手"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+        </service>
+
+    </application>
+</manifest>

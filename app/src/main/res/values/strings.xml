@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FloatAgent</string>
+    <string name="accessibility_desc">FloatAgent 需要读取屏幕内容，以便根据当前界面自动执行操作</string>
+</resources>

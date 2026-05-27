@@ -1,0 +1,23 @@
+# 本机配置（含 SDK 路径和密钥），切勿提交
+local.properties
+
+# Gradle / 构建产物
+.gradle/
+build/
+app/build/
+captures/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# 本地工具配置
+.claude/
+
+# 系统文件
+.DS_Store
+
+# 日志
+*.log
